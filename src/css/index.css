@@ -1,0 +1,110 @@
+/* --- Global Resets & Typography --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    cursor: none;
+}
+body {
+    background-color: #050505;
+    color: #f4f4f4;
+    overflow-x: hidden;
+}
+
+/* --- Custom Cursor --- */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition:
+        width 0.2s,
+        height 0.2s,
+        background-color 0.2s;
+    z-index: 9999;
+}
+.custom-cursor.grow {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* --- Utilities & Buttons --- */
+.page-header {
+    padding: 12rem 5% 4rem;
+    text-align: center;
+}
+.page-header h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+.page-header p {
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+}
+.section-padding {
+    padding: 6rem 5%;
+    text-align: center;
+}
+.section-padding h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-btn,
+.outline-btn {
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: none;
+}
+.cta-btn {
+    background: #fff;
+    color: #000;
+}
+.cta-btn:hover {
+    background: #d4d4d4;
+    transform: scale(1.05);
+}
+.outline-btn {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.outline-btn:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* --- Scroll Animations --- */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
+}
+.scroll-animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+.fade-in.show {
+    opacity: 1;
+}

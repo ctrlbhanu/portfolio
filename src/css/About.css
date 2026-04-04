@@ -1,0 +1,25 @@
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #bbb;
+    margin-bottom: 1.5rem;
+}
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    margin-top: 1rem;
+}
+.skills-list li {
+    background: #111;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #333;
+}
