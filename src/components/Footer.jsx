@@ -47,14 +47,6 @@ export default function Footer() {
           >
             Instagram
           </a>
-          <a
-            href="https://bhanusniceportfolio.webflow.io/"
-            target="_blank"
-            rel="noreferrer"
-            className="footer-link hover-target"
-          >
-            Previous Webflow Site
-          </a>
         </div>
       </div>
 
