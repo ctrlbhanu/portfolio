@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="footer-col">
           <h3>Connect</h3>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/bhanuverma05/"
             target="_blank"
             rel="noreferrer"
             className="footer-link hover-target"
@@ -40,7 +40,7 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href="#"
+            href="https://www.instagram.com/regular_ol_bhanu/"
             target="_blank"
             rel="noreferrer"
             className="footer-link hover-target"
