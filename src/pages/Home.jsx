@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"; // <-- Added useRef here
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "../css/Home.css";
 import gita from "../assets/GITA.mp4";
@@ -9,11 +9,8 @@ import car from "../assets/carousel.png";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-
-  // 1. Create the reference to grab the video
   const videoRef = useRef(null);
 
-  // Tracks your scroll to power the 3D parallax math
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
@@ -26,12 +23,11 @@ export default function Home() {
       <section className="hero-section">
         <div
           className="hero-parallax-wrapper"
-          style={{ opacity: 1 - scrollY / 600 }}
+          style={{ opacity: 1 - scrollY / 700 }}
         >
-          {/* THE TEXT LAYER */}
           <div
             className="hero-content fade-in-up"
-            style={{ transform: `translateY(-${scrollY * 0.25}px)` }}
+            style={{ transform: `translateY(-${scrollY * 0.3}px)` }}
           >
             <h1 className="hero-title">
               HEY, I'M A VIDEO
@@ -46,75 +42,82 @@ export default function Home() {
               emotionally.
             </p>
             <div className="hero-buttons">
-              <Link to="/projects" className="btn-primary hover-target">
+              <Link to="/projects" className="btn-primary">
                 Discover &rarr;
               </Link>
-              <Link to="/about" className="btn-secondary hover-target">
+              <Link to="/about" className="btn-secondary">
                 Learn more &rarr;
               </Link>
             </div>
           </div>
 
-          {/* THE 3D IMAGE GALLERY */}
+          {/* --- THE SCATTERED GALLERY --- */}
           <div className="hero-image-gallery">
-            {/* Image 1: Fades in first */}
+            {/* Main 4 scattered around the text */}
             <img
               src={hero1}
-              alt="Project 1"
-              className="floating-img img-1 slow-fade delay-img-1"
-              style={{ transform: `translateY(-${scrollY * 0.45}px)` }}
+              className="floating-img img-1"
+              style={{ transform: `translateY(-${scrollY * 0.4}px)` }}
+              alt="p1"
             />
-
-            {/* Image 2: Fades in second */}
             <img
               src={hero2}
-              alt="Project 2"
-              className="floating-img img-2 slow-fade delay-img-2"
-              style={{ transform: `translateY(-${scrollY * 0.1}px)` }}
+              className="floating-img img-2"
+              style={{ transform: `translateY(-${scrollY * 0.15}px)` }}
+              alt="p2"
             />
-
-            {/* Image 3: Fades in last */}
             <img
               src={hero3}
-              alt="Project 3"
-              className="floating-img img-3 slow-fade delay-img-3"
-              style={{ transform: `translateY(-${scrollY * 0.75}px)` }}
+              className="floating-img img-3"
+              style={{ transform: `translateY(-${scrollY * 0.6}px)` }}
+              alt="p3"
+            />
+            <img
+              src={car}
+              className="floating-img img-4"
+              style={{ transform: `translateY(-${scrollY * 0.25}px)` }}
+              alt="p4"
+            />
+
+            {/* Extra 2 that appear from the bottom on scroll */}
+            <img
+              src={hero1}
+              className="floating-img img-5"
+              style={{ transform: `translateY(-${scrollY * 0.8}px)` }}
+              alt="p5"
+            />
+            <img
+              src={hero2}
+              className="floating-img img-6"
+              style={{ transform: `translateY(-${scrollY * 0.55}px)` }}
+              alt="p6"
             />
           </div>
         </div>
       </section>
 
       {/* --- SECOND SECTION --- */}
-      <section className="creative-flair-section scroll-animate">
-        {/* 2. Added onMouseEnter to reset the video time to 0 */}
+      <section className="creative-flair-section">
         <div
           className="flair-box"
           onMouseEnter={() => {
-            if (videoRef.current) {
-              videoRef.current.currentTime = 0;
-            }
+            if (videoRef.current) videoRef.current.currentTime = 0;
           }}
         >
           <div className="flair-text">
             <h2>WITH A CREATIVE FLAIR LIKE NO OTHER</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <Link to="/about" className="btn-outline hover-target">
+            <Link to="/about" className="btn-outline">
               Read more about us
             </Link>
           </div>
 
           <div className="flair-images">
-            {/* The container that holds both the image and video */}
             <div className="media-container">
-              {/* Note: Fixed variable name from 'hero' to 'car' so it doesn't crash! */}
               <img src={car} alt="Creative Flair" className="flair-img" />
-
-              {/* 3. Attached the ref to your video */}
               <video
                 ref={videoRef}
                 src={gita}
