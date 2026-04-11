@@ -51,9 +51,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* --- THE SCATTERED GALLERY --- */}
           <div className="hero-image-gallery">
-            {/* Main 4 scattered around the text */}
             <img
               src={hero1}
               className="floating-img img-1"
@@ -78,8 +76,6 @@ export default function Home() {
               style={{ transform: `translateY(-${scrollY * 0.25}px)` }}
               alt="p4"
             />
-
-            {/* Extra 2 that appear from the bottom on scroll */}
             <img
               src={hero1}
               className="floating-img img-5"

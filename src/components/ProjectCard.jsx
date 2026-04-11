@@ -1,48 +1,62 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import "../css/ProjectCard.css";
+
 export default function ProjectCard({
   title,
-  role,
   thumbSrc,
   videoSrc,
   link,
-  delay,
+  className,
+  isActive, // Added to track state
+  onActivate, // Added to trigger state
 }) {
   const videoRef = useRef(null);
+
+  // This watches the isActive state and plays/pauses automatically
+  useEffect(() => {
+    if (isActive) {
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0; // Rewind to 0s
+        videoRef.current.play(); // Play video
+      }
+    } else {
+      if (videoRef.current) {
+        videoRef.current.pause(); // Pause when it goes back to the arc
+      }
+    }
+  }, [isActive]);
 
   return (
     <a
       href={link}
       target="_blank"
       rel="noreferrer"
-      className="grid-item scroll-animate hover-target"
-      style={{ transitionDelay: delay }}
-      onMouseEnter={() => videoRef.current?.play()}
-      onMouseLeave={() => {
-        if (videoRef.current) {
-          videoRef.current.pause();
-          videoRef.current.currentTime = 0;
-        }
-      }}
+      // Apply the active-card class if React says it's active
+      className={`project-card ${className} ${isActive ? "active-card" : ""} hover-target`}
+      onMouseEnter={onActivate}
     >
-      <div className="video-container">
-        <img
-          src={thumbSrc}
-          alt={`${title} Thumbnail`}
-          className="static-thumb"
-        />
-        <video
-          ref={videoRef}
-          className="hover-vid"
-          muted
-          loop
-          playsInline
-          src={videoSrc}
-        ></video>
-      </div>
-      <div className="item-details">
-        <h3>{title}</h3>
-        <p className="roles">{role}</p>
+      <div className="card-window">
+        {/* Retro Window Header */}
+        <div className="window-header">
+          <div className="window-controls">
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </div>
+          <span className="window-title">{title}</span>
+        </div>
+
+        {/* Media Content */}
+        <div className="card-media">
+          <img src={thumbSrc} alt={title} className="card-thumb" />
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            className="card-video"
+            muted
+            loop
+            playsInline
+          ></video>
+        </div>
       </div>
     </a>
   );
